@@ -3,15 +3,16 @@ import pytest
 
 
 def cleanup():
-    xml_path = os.path.join(os.path.dirname(__file__), "tmp", "sample.xml")
-    csv_path = os.path.join(os.path.dirname(__file__), "tmp", "sample.csv")
+    base = os.path.join(os.path.dirname(__file__), "tmp")
+    all_objects_path = [
+        "sample.xml", "sample.csv", "DLTINS_20200108_03of03.zip", "DLTINS_20200108_02of03.zip",
+        "DLTINS_20200108_01of03.zip"
+    ]
 
-    if os.path.exists(xml_path):
-        os.remove(xml_path)
-
-    if os.path.exists(csv_path):
-        os.remove(csv_path)
-
+    for ea in all_objects_path:
+        obj_path = os.path.join(base, ea)
+        if os.path.exists(obj_path):
+            os.remove(obj_path)
 
 def pytest_runtest_setup(item):
     cleanup()

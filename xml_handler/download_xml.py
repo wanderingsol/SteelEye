@@ -28,7 +28,7 @@ class DownloadXml(object):
                 with open(download_path, 'wb') as fh:
                     for chunk in self._connector.download_data(url, chunk_size=8192):
                         fh.write(chunk)
-                _files.append = download_path
+                _files.append(download_path)
         return _files
 
     def run(self):
